@@ -1,8 +1,10 @@
-import { Injectable, NotFoundException} from '@nestjs/common';
+import { Inject, Injectable, NotFoundException} from '@nestjs/common';
 import { CreateUsertDto, UpdateUserDto } from '../DTO/users.dto';
 import { User } from '../entities/user.entity'
 @Injectable()
 export class UserService {
+    constructor(@Inject('API_KEY') apiKey: string){}
+    
     private counterId = 2
     private users: User[] = [
         {
