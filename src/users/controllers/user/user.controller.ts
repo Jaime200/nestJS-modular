@@ -24,13 +24,13 @@ export class UserController {
         return `yo soy un filter`;
     }
 
-    @Get(':productId')
+    @Get(':userId')
     @HttpCode(HttpStatus.ACCEPTED)
-    getOne(@Param('productId', ParseIntPipe) productId: number) {
+    getOne(@Param('userId', ParseIntPipe) userId: number) {
         // response.status(200).send({
-        //   message: `product ${productId}`,
+        //   message: `product ${userId}`,
         // });
-        return this.userservice.findOne(productId);
+        return this.userservice.findOne(userId);
     }
 
     @Post()
