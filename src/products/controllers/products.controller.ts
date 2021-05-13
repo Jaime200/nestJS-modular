@@ -15,7 +15,7 @@ import {
 
 import { Response } from 'express';
 import { ParseIntPipe } from '../../common/parse-int.pipe';
-import { CreateProductDto, UpdateProductDto } from '../DTO/products.dtos';
+import { CreateProductDto, UpdateProductDto } from '../DTO/products.dto';
 
 import { ProductsService } from '../services/products.service';
 
