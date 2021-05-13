@@ -5,9 +5,13 @@ import { UsersModule } from './users/users.module';
 import { ProductsModule } from './products/products.module';
 import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config'
+import { enviroments } from './enviroments'
 @Module({
   imports: [
-    ConfigModule.forRoot({envFilePath: '.env', isGlobal: true })
+    ConfigModule.forRoot({
+      envFilePath:enviroments[process.env.NODE_ENV] || '.env'
+    , isGlobal: true
+   })
   , UsersModule
   , ProductsModule
   , HttpModule
@@ -25,4 +29,8 @@ import { ConfigModule } from '@nestjs/config'
     }
   ],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(){
+    console.log(process.env.NODE_ENV, enviroments[process.env.NODE_ENV])
+  }
+}
