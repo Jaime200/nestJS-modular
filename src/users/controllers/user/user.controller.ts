@@ -2,12 +2,15 @@ import { Controller, Get, Post, Put, Delete, Param, Body, Query, HttpCode, HttpS
 import { CreateUsertDto, UpdateUserDto } from '../../DTO/users.dto';
 import { UserService } from '../../services/user.service';
 import { ParseIntPipe } from '../../../common/parse-int.pipe'
+import { ApiTags, ApiOperation } from '@nestjs/swagger';
 
+@ApiTags('user')
 @Controller('user')
 export class UserController {
 
     constructor(private userservice:UserService){}
     @Get()
+    @ApiOperation({ summary: "Lista de productos" })
     getProducts(
         @Query('limit') limit = 100,
         @Query('offset') offset = 0,
